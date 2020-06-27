@@ -3,6 +3,7 @@ package fr.aberwag.familytree.service;
 import fr.aberwag.familytree.domain.Membre;
 import fr.aberwag.familytree.mapper.MemberMapper;
 import fr.aberwag.familytree.repository.MembreRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -10,26 +11,26 @@ import reactor.core.publisher.Mono;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class MembreManagmentService {
 
-  private MembreRepository membreRepository;
-  private MemberMapper memberMapper;
+  private final MembreRepository membreRepository;
+  private final MemberMapper memberMapper;
 
-  public MembreManagmentService(MemberMapper memberMapper, MembreRepository membreRepository) {
-    this.membreRepository = membreRepository;
-    this.memberMapper = memberMapper;
-  }
-
+  /**
+   * Add membre
+   * @param membre member
+   * @return saved member
+   */
   public Mono<Membre> addMembre(Membre membre) {
-    log.info("membre.getPseudo() ======> {}", membre.getPseudo());
-    log.info("membreRepository =====> {}", membreRepository);
-		/* membreRepository.findOneByPseudo(membre.getPseudo()).ifPresent(m -> {
-			throw new FamilyBusinessException("Le client existe dans la base");
-		});*/
-    log.info("membreRepository.findOneByPseudo(membre.getPseudo()) ======> {}", membreRepository.findOneByPseudo(membre.getPseudo()));
     return membreRepository.save(membre);
   }
 
+  /**
+   * Delete membre
+   * @param pseudo
+   * @return
+   */
   public Mono<Membre> deleteMembre(String pseudo) {
     return membreRepository.findOneByPseudo(pseudo)
         .map(membre -> {
@@ -40,21 +41,36 @@ public class MembreManagmentService {
 
   public Mono<Membre> updateMembre(Membre membre) {
     return membreRepository.findOneByPseudo(membre.getPseudo())
-        .map(m -> memberMapper.mapMembre(m, membre))
-        .flatMap(m -> membreRepository.save(m));
+        .map(member -> memberMapper.mapMembre(member))
+        .flatMap(member -> membreRepository.save(member));
   }
 
+  /**
+   * Update member
+   * @param pseudo pseudo of member
+   * @param membre new membre info
+   * @return updated member
+   */
   public Mono<Membre> updateMembre(String pseudo, Membre membre) {
     return membreRepository.findOneByPseudo(pseudo)
-        .map(m -> memberMapper.mapMembre(m, membre))
-        .flatMap(m -> membreRepository.save(m));
+        .map(member -> memberMapper.mapMembre(member))
+        .flatMap(member -> membreRepository.save(member));
   }
 
+  /**
+   * Get membre by provided id
+   * @param pseudo pseudo of membre
+   * @return membre
+   */
   public Mono<Membre> getMembre(String pseudo) {
     return membreRepository.findOneByPseudo(pseudo);
   }
 
-  public Flux<Membre> getAllActifMembre() {
+  /**
+   * Get all members
+   * @return All members
+   */
+  public Flux<Membre> getAllMembers() {
     return membreRepository.findByActifTrue();
   }
 

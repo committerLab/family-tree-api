@@ -8,5 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public interface MemberMapper {
 
-  Membre mapMembre(Membre membre, Membre newMembre);
+  /**
+   *
+   * @param membre
+   * @return
+   */
+  Membre mapMembre(Membre membre);
 }
