@@ -1,27 +1,29 @@
-package fr.aberwag.familytree.domain;
+package fr.committer.familytree.domain;
 
 import static org.neo4j.springframework.data.core.schema.Relationship.Direction.INCOMING;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.Date;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.neo4j.springframework.data.core.schema.GeneratedValue;
 import org.neo4j.springframework.data.core.schema.Id;
 import org.neo4j.springframework.data.core.schema.Node;
 import org.neo4j.springframework.data.core.schema.Property;
 import org.neo4j.springframework.data.core.schema.Relationship;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Node
-@Getter
-@Setter
+@Node("Membre")
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Membre {
 
   @Id
+  @GeneratedValue
   private Long id;
 
   @Property(name = "pseudo")
@@ -81,20 +83,12 @@ public class Membre {
   @Property(name = "email")
   private String email;
 
-  public String getEmail() {
-    return email;
-  }
+  @Relationship(type = "Mother", direction = INCOMING)
+  private Membre father;
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+  @Relationship(type = "Father", direction = INCOMING)
+  private Membre mother;
 
-  @Relationship(type = "PERE", direction = INCOMING)
-  private Membre pere;
-
-  @Relationship(type = "MERE", direction = INCOMING)
-  private Membre mere;
-
-  @Relationship(type = "CONJOINT", direction = INCOMING)
-  private Membre conjoint;
+  @Relationship(type = "Spoose", direction = INCOMING)
+  private Membre spoose;
 }

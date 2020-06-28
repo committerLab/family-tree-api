@@ -1,4 +1,4 @@
-package fr.aberwag.familytree;
+package fr.committer.familytree;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
