@@ -1,0 +1,13 @@
+org:
+  neo4j:
+    driver:
+      uri: 'neo4j://localhost:7687'
+      authentication:
+        username: neo4j
+        password: password
+
+spring:
+  data:
+    neo4j:
+      repositories:
+        type: reactive
