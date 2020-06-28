@@ -1,10 +1,9 @@
-package fr.aberwag.familytree.service;
+package fr.committer.familytree.service;
 
-import fr.aberwag.familytree.domain.Membre;
-import fr.aberwag.familytree.repository.MembreRepository;
+import fr.committer.familytree.domain.Membre;
+import fr.committer.familytree.repository.MembreRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 

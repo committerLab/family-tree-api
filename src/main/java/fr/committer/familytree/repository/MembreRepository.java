@@ -1,6 +1,6 @@
-package fr.aberwag.familytree.repository;
+package fr.committer.familytree.repository;
 
-import fr.aberwag.familytree.domain.Membre;
+import fr.committer.familytree.domain.Membre;
 import org.neo4j.springframework.data.repository.ReactiveNeo4jRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;

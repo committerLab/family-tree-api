@@ -1,9 +1,8 @@
-package fr.aberwag.familytree.controller;
+package fr.committer.familytree.controller;
 
-import fr.aberwag.familytree.domain.Membre;
-import fr.aberwag.familytree.service.SpooseManagmentService;
+import fr.committer.familytree.domain.Membre;
+import fr.committer.familytree.service.SpooseManagmentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 

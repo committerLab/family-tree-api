@@ -1,6 +1,5 @@
-package fr.aberwag.familytree;
+package fr.committer.familytree;
 
-import org.neo4j.springframework.data.repository.config.EnableReactiveNeo4jRepositories;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

@@ -1,7 +1,7 @@
-package fr.aberwag.familytree.controller;
+package fr.committer.familytree.controller;
 
-import fr.aberwag.familytree.domain.Membre;
-import fr.aberwag.familytree.service.MotherManagmentService;
+import fr.committer.familytree.domain.Membre;
+import fr.committer.familytree.service.MotherManagmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

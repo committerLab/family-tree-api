@@ -1,6 +1,6 @@
-package fr.aberwag.familytree.mapper;
+package fr.committer.familytree.mapper;
 
-import fr.aberwag.familytree.domain.Membre;
+import fr.committer.familytree.domain.Membre;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 

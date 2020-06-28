@@ -1,4 +1,4 @@
-package fr.aberwag.familytree.domain;
+package fr.committer.familytree.domain;
 
 import static org.neo4j.springframework.data.core.schema.Relationship.Direction.INCOMING;
 
@@ -7,9 +7,7 @@ import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.neo4j.springframework.data.core.schema.GeneratedValue;
 import org.neo4j.springframework.data.core.schema.Id;
 import org.neo4j.springframework.data.core.schema.Node;
@@ -31,8 +29,8 @@ public class Membre {
   @Property(name = "pseudo")
   private String pseudo;
 
-  @Property(name = "name")
-  private String name;
+  @Property(name = "nom")
+  private String nom;
 
   @Property(name = "prenom")
   private String prenom;
@@ -85,20 +83,12 @@ public class Membre {
   @Property(name = "email")
   private String email;
 
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  @Relationship(type = "PERE", direction = INCOMING)
+  @Relationship(type = "Mother", direction = INCOMING)
   private Membre father;
 
-  @Relationship(type = "MERE", direction = INCOMING)
+  @Relationship(type = "Father", direction = INCOMING)
   private Membre mother;
 
-  @Relationship(type = "CONJOINT", direction = INCOMING)
+  @Relationship(type = "Spoose", direction = INCOMING)
   private Membre spoose;
 }
