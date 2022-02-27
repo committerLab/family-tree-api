@@ -1,6 +1,6 @@
-package fr.committer.familytree.mapper;
+membere fr.committer.familytree.mapper;
 
-import fr.committer.familytree.domain.Membre;
+import fr.committer.familytree.domain.Member;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
@@ -10,8 +10,8 @@ public interface MemberMapper {
 
   /**
    *
-   * @param membre
+   * @param member
    * @return
    */
-  Membre mapMembre(Membre membre);
+  Member mapMembre(Member member);
 }

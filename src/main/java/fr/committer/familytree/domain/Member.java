@@ -4,10 +4,8 @@ import static org.neo4j.springframework.data.core.schema.Relationship.Direction.
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.Date;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 import org.neo4j.springframework.data.core.schema.GeneratedValue;
 import org.neo4j.springframework.data.core.schema.Id;
 import org.neo4j.springframework.data.core.schema.Node;
@@ -15,12 +13,13 @@ import org.neo4j.springframework.data.core.schema.Property;
 import org.neo4j.springframework.data.core.schema.Relationship;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Node("Membre")
-@Data
+@Node("Member")
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Membre {
+public class Member {
 
   @Id
   @GeneratedValue
@@ -50,7 +49,7 @@ public class Membre {
   @Property(name = "longitudeNaissance")
   private Double longitudeNaissance;
 
-  @Property(name = "description")
+    @Property(name = "description")
   private String description;
 
   @Property(name = "photo")
@@ -84,11 +83,11 @@ public class Membre {
   private String email;
 
   @Relationship(type = "Mother", direction = INCOMING)
-  private Membre father;
+  private Member father;
 
   @Relationship(type = "Father", direction = INCOMING)
-  private Membre mother;
+  private Member mother;
 
-  @Relationship(type = "Spoose", direction = INCOMING)
-  private Membre spoose;
+  @Relationship(type = "Spouse", direction = INCOMING)
+  private Member spouse;
 }
