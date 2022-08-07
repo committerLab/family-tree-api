@@ -8,6 +8,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/children")
 public class ChildController {
 
 	private final ChildService childService;
@@ -18,7 +19,7 @@ public class ChildController {
 	 * @param child child
 	 * @return added member
 	 */
-	@PostMapping( "/child")
+	@PostMapping
 	public Mono<Member> addChild(@RequestBody Member member, @RequestBody Member child) {
 		return childService.addChild(member, child);
 	}
@@ -29,7 +30,7 @@ public class ChildController {
 	 * @param childPseudo child pseudo
 	 * @return member with child
 	 */
-	@GetMapping( "/child/{parentPseudo}/{childPseudo}")
+	@GetMapping( "/{parentPseudo}/{childPseudo}")
 	public Mono<Member> addChildByPseudo(@PathVariable("parentPseudo") String memberPseudo, @PathVariable("childPseudo") String childPseudo) {
 		return childService.addChild(memberPseudo, childPseudo);
 	}

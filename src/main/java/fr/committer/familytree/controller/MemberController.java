@@ -21,7 +21,7 @@ public class MemberController {
 	 * @param member member
 	 * @return Add new member
 	 */
-	@PostMapping( "/members")
+	@PostMapping
 	public Mono<Member> addMember(@RequestBody Member member) {
 		return memberService.addMember(member);
 	}
@@ -61,7 +61,7 @@ public class MemberController {
 	 *
 	 * @return Flux of members
 	 */
-	@GetMapping( "/")
+	@GetMapping
 	public Flux<Member> getAllActiveMember() {
 		return memberService.getAllMembers();
 	}

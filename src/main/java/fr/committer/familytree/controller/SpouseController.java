@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api")
+@RequestMapping("spouses")
 public class SpouseController {
 
 	private final SpouseService spouseService;
@@ -19,7 +19,7 @@ public class SpouseController {
 	 * @param spouse spouse
 	 * @return Member with his spouse
 	 */
-	@PostMapping( "/spouse")
+	@PostMapping
 	public Mono<Member> addConjoint(@RequestBody Member member, @RequestBody Member spouse) {
 		return spouseService.addConjoint(member, spouse);
 	}
@@ -30,7 +30,7 @@ public class SpouseController {
 	 * @param spouse spouse
 	 * @return divorced member
 	 */
-	@DeleteMapping( "/spouse")
+	@DeleteMapping
 	public Mono<Member> deleteConjoint(@RequestBody Member member, @RequestBody Member spouse) {
 		return spouseService.deleteConjoint(member, spouse);
 	}
@@ -41,7 +41,7 @@ public class SpouseController {
 	 * @param spousePseudo spouse pseudo
 	 * @return Married member
 	 */
-	@GetMapping( "/spouse/{member}/{conjoint}")
+	@GetMapping( "/{member}/{conjoint}")
 	public Mono<Member> addConjointByPseudo(@PathVariable("member") String memberPseudo,
 											@PathVariable("conjoint") String spousePseudo) {
 		return spouseService.addConjoint(memberPseudo, spousePseudo);
@@ -53,7 +53,7 @@ public class SpouseController {
 	 * @param spousePseudo spouse pseudo
 	 * @return Divorced member
 	 */
-	@DeleteMapping( "/spouse/{member}/{conjoint}")
+	@DeleteMapping( "/{member}/{conjoint}")
 	public Mono<Member> deleteConjointByPseudo(@PathVariable("member") String memberPseudo,
 											   @PathVariable("conjoint") String spousePseudo) {
 		return spouseService.addConjoint(memberPseudo, spousePseudo);

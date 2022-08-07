@@ -1,4 +1,4 @@
-membere fr.committer.familytree.mapper;
+package fr.committer.familytree.mapper;
 
 import fr.committer.familytree.domain.Member;
 import org.mapstruct.Mapper;
