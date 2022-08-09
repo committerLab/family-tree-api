@@ -30,7 +30,7 @@ public class ChildController {
 	 * @param childPseudo child pseudo
 	 * @return member with child
 	 */
-	@GetMapping( "/{parentPseudo}/{childPseudo}")
+	@PostMapping( "/{parentPseudo}/{childPseudo}")
 	public Mono<Member> addChildByPseudo(@PathVariable("parentPseudo") String memberPseudo, @PathVariable("childPseudo") String childPseudo) {
 		return childService.addChild(memberPseudo, childPseudo);
 	}

@@ -41,7 +41,7 @@ public class SpouseController {
 	 * @param spousePseudo spouse pseudo
 	 * @return Married member
 	 */
-	@GetMapping( "/{member}/{conjoint}")
+	@PostMapping( "/{member}/{conjoint}")
 	public Mono<Member> addConjointByPseudo(@PathVariable("member") String memberPseudo,
 											@PathVariable("conjoint") String spousePseudo) {
 		return spouseService.addConjoint(memberPseudo, spousePseudo);
